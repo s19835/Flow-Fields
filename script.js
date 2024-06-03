@@ -1,3 +1,5 @@
+import particle  from "./particle.js";
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -8,3 +10,5 @@ const height = canvas.height = window.innerHeight;
 ctx.fillStyle = 'white';
 ctx.strokeStyle = 'white';
 
+let p = new particle(width, height);
+p.init(ctx);
