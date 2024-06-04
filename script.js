@@ -11,13 +11,7 @@ const noParticles = 1000;
 ctx.fillStyle = 'white';
 ctx.strokeStyle = 'white';
 
-for (let i = 0; i < noParticles; i++) {
+for (let index = 0; index < noParticles; index++) {
     let p = new particle(width, height);
     p.init(ctx);
-    function animate() {
-        p.line(ctx);
-        requestAnimationFrame(animate);
-    }
-    //p.line(ctx);
-    animate();
 }
