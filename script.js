@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
-const noParticles = 100;
+const noParticles = 1000;
 const particles = [];
 
 //setting draw style
@@ -21,7 +21,7 @@ function grid(width, height) {
     let cols = Math.floor(height/resolution);
     for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-            let angle = Math.floor(x/rows * Math.PI);//Math.cos(x * 0.1) * Math.sin(y * 0.1) * 0.5; // buy changing this you can play around with the art work
+            let angle = Math.cos(x * 0.1) * Math.sin(y * 0.1) * 0.5; // buy changing this you can play around with the art work//Math.floor(x/rows * Math.PI);//<-- this has some simple minimal look to it :)
             flowField.push(angle);  
         }
     }
