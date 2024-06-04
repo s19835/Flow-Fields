@@ -6,6 +6,7 @@ export default class particle {
         this.y = Math.floor(Math.random() * this.height);
         this.context= context;
         this.particleSize = particleSize;
+        this.history = [{x: this.x, y: this.y}];
     }
 
     init() {
@@ -32,6 +33,7 @@ export default class particle {
         //(j : controls the speed of the particle animation)
         this.x += speedX;
         this.y += speedY;
+        this.history.push({x:this.x, y:this.y});
         //this.context.fillRect(this.x, this.y, this.particleSize, this.particleSize);
     }
     gridUpdate(resolution, noColms, flowField) {
@@ -42,6 +44,7 @@ export default class particle {
         let angle = flowField[index];
         this.x += Math.cos(angle);
         this.y += Math.sin(angle);
+        this.history.push({x:this.x, y:this.y});
     }
     gridLine(resolution, noColms, flowField) {
         let x = Math.floor(this.x/resolution);
@@ -52,8 +55,8 @@ export default class particle {
 
         this.context.beginPath();
         this.context.moveTo(this.x, this.y);
-        this.x += Math.random();
-        this.y += Math.random();
+        this.x += Math.cos(angle);
+        this.y += Math.sin(angle);
         this.context.lineTo(this.x, this.y);
         this.context.closePath();
         this.context.stroke();
